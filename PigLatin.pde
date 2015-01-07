@@ -1,10 +1,24 @@
 import java.util.*;
 
 public void setup() {
-	String lines[] = loadStrings("words.txt");
+	String lines[] = loadStrings("LowellHymn.txt");
 	System.out.println("there are " + lines.length + " lines");
 	for (int i = 0 ; i < lines.length; i++) {
-	  System.out.println(pigLatin(lines[i]));
+	  
+	  String sentence = lines[i];
+	  String delims = "[ .,?!]+";
+	  String[] tokens = sentence.split(delims);
+	  String[] trueSentence = new String[tokens.length];
+	  for(int a = 0; a < tokens.length; a++)
+	  {
+	 	 trueSentence[a] = pigLatin(tokens[a]);
+	  }
+	  String truth ="";
+	  for(int b = 0; b < trueSentence.length; b++)
+	  {
+	 	truth = truth + trueSentence[b] + " ";
+	  }
+	  System.out.println(truth);
 	}
 }
 public void draw()
